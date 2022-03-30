@@ -1,0 +1,56 @@
+plugins {
+	id 'org.springframework.boot' version '2.6.5'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+allprojects {
+
+	group = 'com.sura'
+	version = '0.0.1-SNAPSHOT'
+	sourceCompatibility = '11'
+
+	apply plugin: 'org.springframework.boot'
+	apply plugin: 'io.spring.dependency-management'
+	apply plugin: 'java'
+
+	project.ext.springweb = ['org.springframework.boot:spring-boot-starter-web'] //testImplementation
+	project.ext.springtest = ['org.springframework.boot:spring-boot-starter-test']
+	//DB
+	project.ext.springjpa = ['org.springframework.boot:spring-boot-starter-data-jpa'] //implementation
+	project.ext.springflyway = ['org.flywaydb:flyway-core'] //implementation
+	project.ext.springh2 = ['com.h2database:h2'] //runtimeOnly
+	project.ext.pgdriver = ['org.postgresql:postgresql']
+	project.ext.springlombock = ['org.projectlombok:lombok'] // compileOnly, annotationProcessor
+
+
+	bootJar {
+		enabled = false
+	}
+
+
+}
+
+dependencies {
+	implementation project.ext.springweb
+	implementation project.ext.springflyway
+
+	implementation project(':infrastructure')
+
+}
+
+springBoot{
+	mainClass = 'com.sura.expenses.ExpensesApplication'
+}

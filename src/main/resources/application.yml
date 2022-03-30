@@ -1,0 +1,15 @@
+app:
+  datasource:
+    main:
+      driver-class-name: org.postgresql.Driver
+      jdbc-url: jdbc:postgresql://localhost:5432/suraexpenses
+      username: postgres
+      password:
+
+server:
+  port: 3000
+  servlet:
+    context-path: /api
+  error:
+    include-binding-errors: always
+    include-message: always
