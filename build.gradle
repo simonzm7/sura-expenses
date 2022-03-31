@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.6.5'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'info.solidsoft.pitest' version '1.7.0'
 }
 
 
@@ -28,10 +29,14 @@ allprojects {
 
 	project.ext.springweb = ['org.springframework.boot:spring-boot-starter-web'] //testImplementation
 	project.ext.springtest = ['org.springframework.boot:spring-boot-starter-test']
-	//DB
+
+	project.ext.mockitocore = ['org.mockito:mockito-core:3.11.2']
+	project.ext.mockitoinline = ['org.mockito:mockito-inline:3.11.2']
+	project.ext.mockitojupiter = ['org.mockito:mockito-junit-jupiter:3.11.2']
+
 	project.ext.springjpa = ['org.springframework.boot:spring-boot-starter-data-jpa'] //implementation
 	project.ext.springflyway = ['org.flywaydb:flyway-core'] //implementation
-	project.ext.springh2 = ['com.h2database:h2'] //runtimeOnly
+	project.ext.h2 = ['com.h2database:h2'] //runtimeOnly
 	project.ext.pgdriver = ['org.postgresql:postgresql']
 	project.ext.springlombock = ['org.projectlombok:lombok'] // compileOnly, annotationProcessor
 
@@ -47,8 +52,8 @@ dependencies {
 	implementation project.ext.springweb
 	implementation project.ext.springflyway
 
+	runtimeOnly project.ext.h2
 	implementation project(':infrastructure')
-
 }
 
 springBoot{

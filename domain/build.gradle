@@ -32,10 +32,6 @@ dependencies {
     testImplementation project.ext.mockitojupiter
     testImplementation project.ext.h2
 
-    implementation project(":application")
-    implementation project(":domain")
-
-
 }
 
 test {
