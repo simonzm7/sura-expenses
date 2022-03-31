@@ -9,17 +9,16 @@ spring:
     continue-on-error: true
   jpa:
     show-sql: true
-    generate-ddl: true
+    #generate-ddl: true
     hibernate:
-      ddl-auto: create
+      #ddl-auto: create-drop
     database: postgresql
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
 
 server:
-  port: 3000
+  port: 3001
   servlet:
     context-path: /api
   error:

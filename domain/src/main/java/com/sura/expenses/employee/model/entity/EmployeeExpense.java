@@ -2,10 +2,13 @@ package com.sura.expenses.employee.model.entity;
 
 import com.sura.expenses.employee.model.validation.ArgumentValidation;
 import com.sura.expenses.exception.ArgumentException;
+import com.sura.expenses.util.DateUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+
+import java.util.Date;
 
 @Getter
 @Setter
@@ -24,7 +27,7 @@ public class EmployeeExpense {
     private String expenseDate;
     private Integer totalExpense;
 
-    private void isDateFormat(String dateFormat){
+    private void   isDateFormat(String dateFormat){
         if(!ArgumentValidation.validateDateFormat(dateFormat, DATE_PATTERN)){
             throw new ArgumentException(DATE_FORMAT_ERR_MESSAGE);
         }
@@ -39,8 +42,7 @@ public class EmployeeExpense {
         ArgumentValidation.notNull(expenseDate, DATE_ERR_MESSAGE);
         ArgumentValidation.notNull(totalExpense, EXPENSE_ERR_MESSAGE);
         ArgumentValidation.validateMinLength(totalExpense.longValue(), 0, MIN_EXPENSE_ERR_MESSAGE);
-        this.isDateFormat(expenseDate);
-
+        this.isDateFormat(expenseDate.toString());
         this.employeeId = employeeId;
         this.expenseDate = expenseDate;
         this.totalExpense = totalExpense;

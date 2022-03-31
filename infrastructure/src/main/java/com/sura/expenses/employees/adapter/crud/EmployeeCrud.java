@@ -1,4 +1,4 @@
-package com.sura.expenses.employees.adapter;
+package com.sura.expenses.employees.adapter.crud;
 
 import com.sura.expenses.employees.entity.EmployeeEntity;
 import org.springframework.data.repository.CrudRepository;
