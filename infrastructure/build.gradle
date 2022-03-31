@@ -33,7 +33,6 @@ dependencies {
     testImplementation project.ext.mockitocore
     testImplementation project.ext.mockitoinline
     testImplementation project.ext.mockitojupiter
-    //testImplementation project.ext.h2
 
 
     implementation project(":application")
