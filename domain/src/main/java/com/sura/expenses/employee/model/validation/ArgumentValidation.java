@@ -5,6 +5,7 @@ import com.sura.expenses.exception.LengthException;
 import com.sura.expenses.exception.RequiredException;
 import lombok.NoArgsConstructor;
 
+import java.text.SimpleDateFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -30,4 +31,15 @@ public class ArgumentValidation {
             throw new LengthException(errorMessage);
         }
     }
+    public static boolean validateDateFormat(String date, String format){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
+        dateFormat.setLenient(false);
+        try{
+           dateFormat.parse(date);
+        }catch (Exception e){
+            return false;
+        }
+        return true;
+    }
+
 }

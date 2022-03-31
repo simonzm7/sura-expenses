@@ -12,5 +12,5 @@ public class CommandEmployee {
     private Long employeeId;
     private String employeeName;
     private String expenseDate;
-    private Double totalExpense;
+    private Integer totalExpense;
 }
