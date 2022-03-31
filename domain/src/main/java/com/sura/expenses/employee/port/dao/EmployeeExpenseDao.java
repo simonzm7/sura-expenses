@@ -1,7 +1,12 @@
 package com.sura.expenses.employee.port.dao;
 
-import java.sql.Date;
+import com.sura.expenses.employee.model.dto.EmployeeMonthExpenseDto;
 
-public interface EmployeeExpenseDao {
-    boolean existsExpense(Long employeeId, Date expenseDate);
+import java.math.BigDecimal;
+import java.util.List;
+
+public interface EmployeeExpenseDao  {
+    BigDecimal getTotalExpenses();
+
+    List<EmployeeMonthExpenseDto> getEmployeeMonthExpense();
 }

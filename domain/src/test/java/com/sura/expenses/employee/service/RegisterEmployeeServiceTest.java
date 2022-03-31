@@ -15,9 +15,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class RegisterEmployeeServiceTest {
 
-
-
-
     @Test
     @DisplayName("should register employee")
     public void registerEmployee(){
@@ -35,7 +32,6 @@ class RegisterEmployeeServiceTest {
         registerEmployeeService.execute(employee, employeeExpense);
         Mockito.verify(employeeRepository, Mockito.times(1)).save(employee);
         Mockito.verify(employeeExpenseRepository, Mockito.times(1)).save(employeeExpense);
-
 
     }
 

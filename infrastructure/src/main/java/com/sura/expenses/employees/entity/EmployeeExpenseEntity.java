@@ -2,6 +2,7 @@ package com.sura.expenses.employees.entity;
 
 import lombok.Data;
 import javax.persistence.*;
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -25,10 +26,11 @@ public class EmployeeExpenseEntity {
     private Long employeeId;
 
     @Column(name = "expense_date")
-    private String expenseDate;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date expenseDate;
 
     @Column(name = "total_expense")
-    private Integer totalExpense;
+    private BigDecimal totalExpense;
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)

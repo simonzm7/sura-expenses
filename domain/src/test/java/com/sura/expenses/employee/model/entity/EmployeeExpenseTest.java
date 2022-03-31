@@ -7,6 +7,8 @@ import com.sura.expenses.exception.RequiredException;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.math.BigDecimal;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeExpenseTest {
@@ -32,7 +34,7 @@ class EmployeeExpenseTest {
     @DisplayName("should throws error if expense is less than 0")
     void expenseLessThan(){
         EmployeeExpenseDataBuilder builder = new EmployeeExpenseDataBuilder();
-        builder.setTotalExpense(-1);
+        builder.setTotalExpense(BigDecimal.valueOf(-1));
         assertThrows(LengthException.class, () -> builder.build());
     }
 

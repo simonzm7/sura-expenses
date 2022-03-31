@@ -1,3 +1,4 @@
+
 create table employee (
         id BIGINT PRIMARY KEY,
         employee_id BIGINT NOT NULL,
@@ -10,5 +11,6 @@ CREATE SEQUENCE employee_sequence INCREMENT 1 START 1 OWNED BY employee.id;
 
 
 insert into employee("id","employee_id", "employee_name") VALUES('1', '1', 'Adam');
+insert into employee("id","employee_id", "employee_name") VALUES('2', '3', 'Fran');
 
 select * from employee_expense INNER JOIN employee ON employee.employee_id = '1' WHERE employee_expense.employee_id = '1';

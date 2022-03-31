@@ -2,12 +2,14 @@ package com.sura.expenses.employee.model.entity;
 
 import com.sura.expenses.employee.model.validation.ArgumentValidation;
 import com.sura.expenses.exception.ArgumentException;
-import com.sura.expenses.util.DateUtil;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
+import java.math.BigDecimal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Getter
@@ -24,27 +26,31 @@ public class EmployeeExpense {
     private static final String DATE_PATTERN = "dd/MM/yyyy";
 
     private Long employeeId;
-    private String expenseDate;
-    private Integer totalExpense;
+    private Date expenseDate;
+    private BigDecimal totalExpense;
 
-    private void   isDateFormat(String dateFormat){
-        if(!ArgumentValidation.validateDateFormat(dateFormat, DATE_PATTERN)){
+    private Date toDate(String dateStr){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_PATTERN);
+        dateFormat.setLenient(false);
+        try{
+            return dateFormat.parse(dateStr);
+        }catch (ParseException e){
             throw new ArgumentException(DATE_FORMAT_ERR_MESSAGE);
         }
     }
 
 
+
     public EmployeeExpense(
             Long employeeId,
             String expenseDate,
-            Integer totalExpense
+            BigDecimal totalExpense
     ){
         ArgumentValidation.notNull(expenseDate, DATE_ERR_MESSAGE);
         ArgumentValidation.notNull(totalExpense, EXPENSE_ERR_MESSAGE);
         ArgumentValidation.validateMinLength(totalExpense.longValue(), 0, MIN_EXPENSE_ERR_MESSAGE);
-        this.isDateFormat(expenseDate.toString());
         this.employeeId = employeeId;
-        this.expenseDate = expenseDate;
+        this.expenseDate = this.toDate(expenseDate);
         this.totalExpense = totalExpense;
     }
 }

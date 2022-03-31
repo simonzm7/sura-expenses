@@ -31,15 +31,5 @@ public class ArgumentValidation {
             throw new LengthException(errorMessage);
         }
     }
-    public static boolean validateDateFormat(String date, String format){
-        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
-        dateFormat.setLenient(false);
-        try{
-           dateFormat.parse(date);
-        }catch (Exception e){
-            return false;
-        }
-        return true;
-    }
 
 }

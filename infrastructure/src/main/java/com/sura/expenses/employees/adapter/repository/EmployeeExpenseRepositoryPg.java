@@ -3,7 +3,6 @@ package com.sura.expenses.employees.adapter.repository;
 import com.sura.expenses.employee.model.entity.EmployeeExpense;
 import com.sura.expenses.employee.port.repository.EmployeeExpenseRepository;
 import com.sura.expenses.employees.adapter.crud.EmployeeExpenseCrud;
-import com.sura.expenses.employees.entity.EmployeeEntity;
 import com.sura.expenses.employees.entity.EmployeeExpenseEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

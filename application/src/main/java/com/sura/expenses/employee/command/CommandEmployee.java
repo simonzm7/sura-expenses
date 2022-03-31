@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.math.BigDecimal;
 
 @Getter
 @NoArgsConstructor
@@ -14,5 +14,5 @@ public class CommandEmployee {
     private Long employeeId;
     private String employeeName;
     private String expenseDate;
-    private Integer totalExpense;
+    private BigDecimal totalExpense;
 }
