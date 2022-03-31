@@ -24,6 +24,8 @@ dependencies {
     implementation project.ext.springweb
     implementation project.ext.springjpa
 
+    runtimeOnly project.ext.pgdriver
+
     compileOnly project.ext.springlombock
     annotationProcessor project.ext.springlombock
 
@@ -31,7 +33,7 @@ dependencies {
     testImplementation project.ext.mockitocore
     testImplementation project.ext.mockitoinline
     testImplementation project.ext.mockitojupiter
-    testImplementation project.ext.h2
+    //testImplementation project.ext.h2
 
 
     implementation project(":application")

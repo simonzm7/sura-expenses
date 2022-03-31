@@ -37,7 +37,7 @@ allprojects {
 	project.ext.springjpa = ['org.springframework.boot:spring-boot-starter-data-jpa'] //implementation
 	project.ext.springflyway = ['org.flywaydb:flyway-core'] //implementation
 	project.ext.h2 = ['com.h2database:h2'] //runtimeOnly
-	project.ext.pgdriver = ['org.postgresql:postgresql']
+	project.ext.pgdriver = ['org.postgresql:postgresql'] //runtimeOnly
 	project.ext.springlombock = ['org.projectlombok:lombok'] // compileOnly, annotationProcessor
 
 
@@ -51,8 +51,6 @@ allprojects {
 dependencies {
 	implementation project.ext.springweb
 	implementation project.ext.springflyway
-
-	runtimeOnly project.ext.h2
 	implementation project(':infrastructure')
 }
 
