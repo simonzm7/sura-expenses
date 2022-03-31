@@ -8,7 +8,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "employee")
 @Data
-public class Employee {
+public class EmployeeEntity {
 
 
     @Id
