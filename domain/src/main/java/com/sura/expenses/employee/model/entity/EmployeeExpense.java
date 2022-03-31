@@ -1,7 +1,6 @@
 package com.sura.expenses.employee.model.entity;
 
 import com.sura.expenses.employee.model.validation.ArgumentValidation;
-import com.sura.expenses.employee.model.validation.RegexInputs;
 import com.sura.expenses.exception.ArgumentException;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +18,7 @@ public class EmployeeExpense {
     private static final String MIN_EXPENSE_ERR_MESSAGE = "El gasto debe ser mayor o igual a 0.";
     private static final String TOTAL_EXPENSE_ERR_MESSAGE = "El gasto debe tener un formato valido.";
     private static final String DATE_FORMAT_ERR_MESSAGE = "La fecha debe tener un formato valido";
-    private static final String DATE_PATTERN = "yyyy-MM-dd";
+    private static final String DATE_PATTERN = "dd/MM/yyyy";
 
     private Long employeeId;
     private String expenseDate;
