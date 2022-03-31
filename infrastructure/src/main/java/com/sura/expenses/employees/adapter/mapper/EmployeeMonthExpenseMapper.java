@@ -17,7 +17,9 @@ public class EmployeeMonthExpenseMapper {
             list.add(new EmployeeMonthExpenseDto(
                     (BigDecimal) column[0],
                     ((String)column[1]).trim(),
-                    ((String)column[2]).trim()
+                    ((String)column[2]).trim(),
+                    (BigDecimal) column[3],
+                    (BigDecimal) column[4]
             ));
         }
         return list;

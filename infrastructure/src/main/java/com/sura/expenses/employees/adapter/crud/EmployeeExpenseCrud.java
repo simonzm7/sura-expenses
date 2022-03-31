@@ -14,7 +14,7 @@ public interface EmployeeExpenseCrud extends CrudRepository<EmployeeExpenseEntit
     @Query(value = "select sum(total_expense) as total_expense from employee_expense", nativeQuery = true)
     BigDecimal getTotalExpenses();
 
-    @Query(value = "select sum(ee.total_expense) as total_month, to_char(to_date(cast(EXTRACT(MONTH FROM ee.expense_date) as TEXT), 'MM'), 'Month') as month, e.employee_name  from employee_expense ee inner join employee e on e.id = ee.employee_id where EXTRACT(MONTH FROM ee.expense_date) >=  EXTRACT(MONTH FROM ee.expense_date) and EXTRACT(MONTH FROM ee.expense_date) <= EXTRACT(MONTH FROM ee.expense_date) group by ee.employee_id, e.employee_name, EXTRACT(MONTH FROM ee.expense_date) order by employee_name, month ASC", nativeQuery = true)
+    @Query(value = "select sum(ee.total_expense) as total_month, to_char(to_date(cast(EXTRACT(MONTH FROM ee.expense_date) as TEXT), 'MM'), 'Month') as month, e.employee_name, CASE when round((sum(ee.total_expense) * 19 / 100) + sum(ee.total_expense)) > 1000000 then round((sum(ee.total_expense) * 19 / 100) + sum(ee.total_expense)) else 0 END as assume_sura, CASE when round((sum(ee.total_expense) * 19 / 100) + sum(ee.total_expense)) < 1000000 then round((sum(ee.total_expense) * 19 / 100) + sum(ee.total_expense)) else 0 END as assume_employee from employee_expense ee inner join employee e on e.id = ee.employee_id where EXTRACT(MONTH FROM ee.expense_date) >=  EXTRACT(MONTH FROM ee.expense_date) and EXTRACT(MONTH FROM ee.expense_date) <= EXTRACT(MONTH FROM ee.expense_date) group by ee.employee_id, e.employee_name, EXTRACT(MONTH FROM ee.expense_date) order by employee_name, month ASC ", nativeQuery = true)
     List<Object[]> getEmployeeMonthExpense();
 
 }

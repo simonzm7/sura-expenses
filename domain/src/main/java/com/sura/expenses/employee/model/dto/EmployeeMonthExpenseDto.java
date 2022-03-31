@@ -13,4 +13,6 @@ public class EmployeeMonthExpenseDto {
     private BigDecimal totalMonthExpense;
     private String month;
     private String employeeName;
+    private BigDecimal assumeSura;
+    private BigDecimal assumeEmployee;
 }
