@@ -10,6 +10,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 @Component
 @Transactional
 @RequiredArgsConstructor
@@ -17,9 +19,11 @@ public class RegisterEmployeeHandler {
 
     private final RegisterEmployeeService registerEmployeeService;
     private final EmployeeFactory employeeFactory;
-    public void execute(CommandEmployee commandEmployee){
-        Employee employee = this.employeeFactory.toEmployee(commandEmployee);
-        EmployeeExpense employeeExpense = this.employeeFactory.toEmployeeExpense(employee.getEmployeeId(), commandEmployee);
-        this.registerEmployeeService.execute(employee, employeeExpense);
+    public void execute(List<CommandEmployee> commandEmployees){
+        for (CommandEmployee command : commandEmployees) {
+            Employee employee = this.employeeFactory.toEmployee(command);
+            EmployeeExpense employeeExpense = this.employeeFactory.toEmployeeExpense(employee.getEmployeeId(), command);
+            this.registerEmployeeService.execute(employee, employeeExpense);
+        }
     }
 }

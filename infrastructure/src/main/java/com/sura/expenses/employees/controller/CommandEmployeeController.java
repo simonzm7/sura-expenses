@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/employee")
@@ -20,7 +22,7 @@ public class CommandEmployeeController {
     private final RegisterEmployeeHandler registerEmployeeHandler;
 
     @PostMapping()
-    public void registerEmployees(@RequestBody CommandEmployee commandEmployee) {
+    public void registerEmployees(@RequestBody List<CommandEmployee> commandEmployee) {
         this.registerEmployeeHandler.execute(commandEmployee);
     }
 }
