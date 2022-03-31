@@ -27,5 +27,10 @@ _El backend se encuentra desarrollado bajo una arquitectura orientada al dominio
 6. JUnit
 
 
+1. **Con el proposito de obtener seguridad en el despliegue se debe obtar por una arquitectura que implemente todo los necesario para este proposito. Ejemplo: Implementacion de redes privadas virtuales con accesso unicamente por las direcciones o servicios habilitados para consultar esta instancia, Filtrado de trafico para habilitar unicamente los puertos necesarios.**
+
+2. **Si se quiere realizar integraciones facilmente con otros servicios, se puede hacer uso de middelwares para la comunicacion asincrona(RabbitMQ)**
+
+
 
 
