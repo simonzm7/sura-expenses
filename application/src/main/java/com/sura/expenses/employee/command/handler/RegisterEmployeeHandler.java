@@ -19,11 +19,13 @@ public class RegisterEmployeeHandler {
 
     private final RegisterEmployeeService registerEmployeeService;
     private final EmployeeFactory employeeFactory;
+
+    private void mapCommandEmployees(CommandEmployee commandEmployee){
+        Employee employee = this.employeeFactory.toEmployee(commandEmployee);
+        EmployeeExpense employeeExpense = this.employeeFactory.toEmployeeExpense(employee.getEmployeeId(), commandEmployee);
+        this.registerEmployeeService.execute(employee, employeeExpense);
+    }
     public void execute(List<CommandEmployee> commandEmployees){
-        for (CommandEmployee command : commandEmployees) {
-            Employee employee = this.employeeFactory.toEmployee(command);
-            EmployeeExpense employeeExpense = this.employeeFactory.toEmployeeExpense(employee.getEmployeeId(), command);
-            this.registerEmployeeService.execute(employee, employeeExpense);
-        }
+            commandEmployees.forEach(this::mapCommandEmployees);
     }
 }
